@@ -34,6 +34,15 @@ const config: HardhatUserConfig = {
           },
         },
       },
+      {
+        version: "0.6.0",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
     ],
   },
   networks: {
@@ -46,6 +55,15 @@ const config: HardhatUserConfig = {
       url: process.env.POLYGON_URL || "",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      gas: 2100000,
+      gasPrice: 8000000000,
+    },
+    rinkeby: {
+      url: process.env.RINKEBY_URL || "",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      gas: 2100000,
+      gasPrice: 8000000000,
     },
   },
   gasReporter: {
