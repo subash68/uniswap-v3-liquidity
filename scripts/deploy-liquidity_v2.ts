@@ -7,15 +7,15 @@ import { ethers } from "hardhat";
 
 async function main() {
   const amountToPlay = 1000000;
-  const Liquidity = await ethers.getContractFactory("LiquiditySetup");
-  let liquidity = await Liquidity.deploy(
-    "0xC36442b4a4522E871399CD717aBDD847Ab11FE88"
-  );
+const Liquidity = await ethers.getContractFactory("LiquiditySetup");
+//   let liquidity = await Liquidity.deploy();
 
-  await liquidity.deployed();
+//   await liquidity.deployed();
 
-  // const Liq = await ethers.getContractFactory("LiquiditySetup");
-  liquidity = await Liquidity.attach(liquidity.address);
+//   // const Liq = await ethers.getContractFactory("LiquiditySetup");
+//   liquidity = await Liquidity.attach(liquidity.address);
+    
+    const liquidity = await Liquidity.attach("0x0c7342ed4c209ac7fa872c8524a20c33744251e7");
 
   // get approval here
   const Token = await ethers.getContractFactory("Token");

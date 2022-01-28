@@ -7,11 +7,28 @@
 import { ethers } from "hardhat";
 
 async function main() {
-	const Liq = await ethers.getContractFactory("LiquiditySetup");
-	const liq = await Liq.attach("0xB9ce0823D48d33F2105ecd5Ce37d7ba80278514e");
-	await liq.mintNewPositionWithApproval().then((response) => {
-		console.log(response);
-	});
+	// const Liq = await ethers.getContractFactory("LiquiditySetup");
+	// const liq = await Liq.attach("0x9Dec84F5b9F1897B4ef49CF4cEDe87A935B77697");
+
+	// get approval here
+	const Token = await ethers.getContractFactory("Token");
+	const dai = await Token.attach("0x6d5582c29d9Bd9E89ed8482786675b7348F33a1a");
+
+	// approve the liquidity contract to spend
+	await dai.approve("0x9Dec84F5b9F1897B4ef49CF4cEDe87A935B77697", 1000000);
+	// send token to contract
+	await dai.transfer("0x9Dec84F5b9F1897B4ef49CF4cEDe87A935B77697", 1000000);
+
+	const usdc = await Token.attach("0x4c012686b47874D79F49b13d3a5CB2aDC37e56ba");
+	await usdc.approve("0x9Dec84F5b9F1897B4ef49CF4cEDe87A935B77697", 1000000);
+	await usdc.transfer("0x9Dec84F5b9F1897B4ef49CF4cEDe87A935B77697", 1000000);
+
+	// await liq.safeTransferDAI().then((response) => {
+	// 	console.log(response);
+	// });
+	// await liq.safeTransferUSDC().then((response) => {
+	// 	console.log(response);
+	// });
 
 	// await liq.mintNewPosition().then((response) => {
 	// 	console.log(response);
