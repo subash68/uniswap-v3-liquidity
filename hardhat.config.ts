@@ -26,6 +26,15 @@ const config: HardhatUserConfig = {
   solidity: {
     compilers: [
       {
+        version: "0.6.2",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      {
         version: "0.7.6",
         settings: {
           optimizer: {
@@ -73,14 +82,14 @@ const config: HardhatUserConfig = {
       url: process.env.POLYGON_URL || "",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-      gas: 2100000,
+      gas: 21000,
       gasPrice: 8000000000,
     },
     rinkeby: {
       url: process.env.RINKEBY_URL || "",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
-      gas: 2100000,
+      gas: 21000,
       gasPrice: 8000000000,
     },
   },

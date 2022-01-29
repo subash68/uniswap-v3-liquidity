@@ -15,10 +15,17 @@ async function main() {
     swapRouter,
   );
     
-    await singleSwap.deployed();
-    console.log(singleSwap.address)
+  await singleSwap.deployed();
+  console.log(singleSwap.address)
+  
+  // get contract here
+  const DAI = await ethers.getContractFactory("SimpleToken");
+  const token = await DAI.attach("0x2C13E1ab78918b2B53612CA8c4CacF58c0CbdfC0");
+  await token.approve(singleSwap.address, 50000000);
+  const [sender] = await ethers.getSigners();
+  await token.transferFrom(sender.address, singleSwap.address, 50000000)
 
-    await singleSwap.swapExactInputSingle(50000);
+  await singleSwap.swapExactInputSingle(50000000);
   
 }
 

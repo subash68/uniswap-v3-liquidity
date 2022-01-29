@@ -6,15 +6,34 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const Token = await ethers.getContractFactory("Token");
-  const token1 = await Token.deploy("sDAI Token", "sDAI", 1, 1e9);
-  const token2 = await Token.deploy("sUSDC Token", "sUSDC", 1, 1e9);
+  // const Token = await ethers.getContractFactory("Token");
+  // const token1 = await Token.deploy("sDAI Token", "sDAI", 1, 1e9);
+  // const token2 = await Token.deploy("sUSDC Token", "sUSDC", 1, 1e9);
 
-  await token1.deployed();
-  await token2.deployed();
+  // await token1.deployed();
+  // await token2.deployed();
 
-  console.log("test token 1 deployed to:", token1.address);
-  console.log("test token 2 deployed to:", token2.address);
+  // console.log("test token 1 deployed to:", token1.address);
+  // console.log("test token 2 deployed to:", token2.address);
+
+  const SimpleToken = await ethers.getContractFactory("SimpleToken");
+  let simpleToken = await SimpleToken.deploy(
+    "GAUTHAM Token",
+    "GTM"
+    // BigNumber.from("100000000000000000000000")
+  );
+
+  await simpleToken.deployed();
+
+  simpleToken = await SimpleToken.deploy(
+    "STARK Token",
+    "STK"
+    // BigNumber.from("100000000000000000000000")
+  );
+
+  await simpleToken.deployed();
+
+  console.log(simpleToken.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

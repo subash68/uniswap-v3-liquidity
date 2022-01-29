@@ -27,9 +27,6 @@ contract LiquiditySetup is IERC721Receiver {
     address public constant DAI = 0x6d5582c29d9Bd9E89ed8482786675b7348F33a1a;    
     address public constant USDC = 0x4c012686b47874D79F49b13d3a5CB2aDC37e56ba;
 
-    uint256 public constant DAI_AMOUNT = 1000000;
-    uint256 public constant USDC_AMOUNT = 1000000;
-
 
 
     // address public immutable DAI;
